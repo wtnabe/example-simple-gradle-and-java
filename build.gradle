@@ -14,6 +14,22 @@ jar {
   }
 }
 
+repositories {
+  mavenCentral()
+}
+
+test {
+  reports.html.required = false
+  dependsOn cleanTest
+  testLogging.showStandardStreams = true
+}
+
+dependencies {
+  // https://mvnrepository.com/artifact/junit/junit
+  testImplementation 'org.junit.jupiter:junit-jupiter:5.7.1'
+  testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
 tasks.withType(JavaCompile) { // gradle's default is not utf-8
   options.encoding = 'UTF-8'
 }
